@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\ItemController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -37,6 +38,6 @@ Route::middleware([
     })->name('dashboard');
 
     Route::resource('/departments',DepartmentController::class);
-
+    Route::resource('/items',ItemController::class);
 });
 

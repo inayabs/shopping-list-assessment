@@ -70,9 +70,13 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
         //
+        $department = new DepartmentResource(Department::with('item')->where('slug',$slug)->first());
+        return Inertia::render('Department/Show',[
+            'department'=>$department
+        ]);
     }
 
     /**

@@ -13,4 +13,8 @@ class Department extends Model
     public function user(){
         return $this->hasOne(User::class);
     }
+
+    public function item(){
+        return $this->hasMany(Item::class);
+    }
 }

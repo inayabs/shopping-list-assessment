@@ -7,6 +7,7 @@ use Tests\TestCase;
 use Illuminate\Support\Str;
 use App\Models\Department;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class DepartmentTest extends TestCase
 {
@@ -15,9 +16,9 @@ class DepartmentTest extends TestCase
      *
      * @return void
      */
-    public $created_department;
-    public function test_example()
-    {
+    public function test_create_user(){
+        $user = User::factory()->create();
+
         $this->assertTrue(true);
     }
 
@@ -32,7 +33,7 @@ class DepartmentTest extends TestCase
         $department->name = $name;
         $department->slug = $slug;
         $department->save();
-        $this->created_department = $department->id;
+        
         $this->assertTrue(true);
     }
 
