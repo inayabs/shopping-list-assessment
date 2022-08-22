@@ -2,13 +2,18 @@
 
 namespace Tests\Unit;
 
+use App\Models\Department;
+use App\Models\Item;
+use App\Models\ItemList;
 // use PHPUnit\Framework\TestCase;
 use Tests\TestCase;
 use Illuminate\Support\Str;
-use App\Models\Item;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class ItemTest extends TestCase
+class ListUnitTest extends TestCase
 {
+    // use RefreshDatabase;
     /**
      * A basic unit test example.
      *
@@ -19,26 +24,24 @@ class ItemTest extends TestCase
     {
         $name = Str::random(5).' '.Str::random(5);
 
-        $item = new Item();
-        $item->name = $name;
-        $item->department_id = 1;
+        $item = new ItemList();
+        $item->quantity = 1;
+        $item->item_id = Item::first()->id;
         $item->save();
         
         $this->assertTrue(true);
     }
 
     public function test_update_item(){
-        $name = Str::random(5).' '.Str::random(5);
-
-        $item = Item::findOrFail(1);
-        $item->name = $name;
+        $item = ItemList::first();
+        $item->quantity = 2;
         $item->update();
 
         $this->assertTrue(true);
     }
 
     public function test_list_item(){
-        $departments = Item::orderBy('id','desc');
+        $departments = ItemList::orderBy('id','desc');
 
         $this->assertTrue(true);
     }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\ItemController;
+use App\Http\Controllers\ItemListController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -39,5 +40,6 @@ Route::middleware([
 
     Route::resource('/departments',DepartmentController::class);
     Route::resource('/items',ItemController::class);
+    Route::resource('/list',ItemListController::class);
 });
 

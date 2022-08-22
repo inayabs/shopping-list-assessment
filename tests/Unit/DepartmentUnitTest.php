@@ -8,9 +8,11 @@ use Illuminate\Support\Str;
 use App\Models\Department;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class DepartmentTest extends TestCase
+class DepartmentUnitTest extends TestCase
 {
+    // use RefreshDatabase;
     /**
      * A basic unit test example.
      *
@@ -26,7 +28,7 @@ class DepartmentTest extends TestCase
     {
         $name = Str::random(5).' '.Str::random(5);
         $slug = Str::slug($name,'-');
-        $user_id = 1;
+        $user_id = User::first()->id;
 
         $department = new Department;
         $department->user_id = $user_id;
@@ -40,9 +42,9 @@ class DepartmentTest extends TestCase
     public function test_update_department(){
         $name = Str::random(5).' '.Str::random(5);
         $slug = Str::slug($name,'-');
-        $user_id = 1;
+        $user_id = User::first()->id;
 
-        $department = Department::findOrFail(1);
+        $department = Department::first();
         $department->user_id = $user_id;
         $department->name = $name;
         $department->slug = $slug;
@@ -52,7 +54,7 @@ class DepartmentTest extends TestCase
     }
 
     public function test_list_department(){
-        $user_id = 1;
+        $user_id = User::first()->id;
         $departments = Department::where('user_id',$user_id)->get();
 
         $this->assertTrue(true);
